@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en" class="h-full dark" style="color-scheme: dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sai Kalyan Veera — Portfolio</title>
+  <meta name="description" content="Sai Kalyan Veera — Generative AI Engineer, AI Developer, ML Engineer, GenAI Developer, Data Scientist" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { red: '#E10600' } },
+          boxShadow: { glow: '0 0 40px rgba(225, 6, 0, 0.35)' }
+        }
+      },
+      darkMode: ['class']
+    }
+  </script>
+
+  <style>
+    :root { --bg-dark:#000; --text:#F1F5F9; --saber:#E10600; --saber-soft:#ff4d4d; --crawl:#FFE81F; }
+    html,body{height:100%}
+    body{background:#000;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .headline{font-family:Orbitron,system-ui,sans-serif;letter-spacing:.02em}
+    #starfield{position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 800px at 70% 20%,rgba(225,6,0,.18),transparent 60%)}
+    .glass{background:rgba(0,0,0,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08)}
+    .dock-btn{transition:transform .15s ease,box-shadow .2s ease}
+    .dock-btn:hover{transform:translateY(-2px) scale(1.05);box-shadow:0 10px 30px rgba(225,6,0,.25)}
+    .fade-in{animation:fadeIn .45s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Opening crawl */
+    #sw-crawl-overlay{position:fixed;inset:0;z-index:9998;display:none;place-items:center;background:rgba(0,0,0,.92)}
+    #sw-crawl-frame{position:relative;width:min(90vw,900px);height:70vh;overflow:hidden;perspective:500px}
+    #sw-crawl{position:absolute;bottom:-10%;width:100%;transform-origin:50% 100%;transform:rotateX(25deg);color:var(--crawl);font-family:ui-monospace,monospace;text-align:justify;letter-spacing:.04em}
+    #sw-crawl .title{text-align:center;text-transform:uppercase;font-weight:800;margin-bottom:1.2rem;letter-spacing:.08em}
+    #sw-crawl p{margin:0 2rem 1.1rem;line-height:1.55;font-size:clamp(14px,2vw,18px);text-shadow:0 0 6px rgba(255,232,31,.35)}
+    .sw-crawl-animate{animation:swCrawl 32s linear forwards}
+    @keyframes swCrawl{0%{transform:translateY(0) rotateX(25deg) scale(1);opacity:1}100%{transform:translateY(-170%) rotateX(25deg) scale(.8);opacity:.98}}
+    #sw-crawl-skip{position:absolute;right:14px;top:14px;background:rgba(0,0,0,.6);color:var(--crawl);border:1px solid rgba(255,232,31,.4);padding:6px 10px;border-radius:999px;cursor:pointer;font-size:12px}
+    #sw-crawl-skip:hover{background:rgba(0,0,0,.82)}
+
+    /* Skills section styling */
+    .grain{position:relative;isolation:isolate}
+    .grain::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.07;mix-blend-mode:soft-light;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+      background-size:160px 160px;animation:grainMove 8s linear infinite}
+    @keyframes grainMove{0%{transform:translate(0,0)}100%{transform:translate(-160px,-160px)}}
+    .holo{position:relative;background:rgba(5,5,5,.55);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px) saturate(1.05);border-radius:1rem;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 0 32px rgba(225,6,0,.12)}
+    .holo::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.06) 0,rgba(255,255,255,.06) 1px,transparent 1px,transparent 3px);mix-blend-mode:overlay;opacity:.35;animation:scan 6s linear infinite}
+    @keyframes scan{0%{transform:translateY(-8px)}100%{transform:translateY(8px)}}
+    .holo::after{content:"";position:absolute;inset:-1px;border-radius:1rem;background:radial-gradient(120px 60px at 8% -10%,rgba(225,6,0,.25),transparent 60%),radial-gradient(160px 80px at 108% 110%,rgba(225,6,0,.25),transparent 60%);mix-blend-mode:screen;opacity:.7}
+    .flicker{animation:flicker 5.5s infinite steps(80,end)}
+    @keyframes flicker{0%,2%,8%,9%,11%,100%{opacity:1}1%,7%,10%{opacity:.92}3%{opacity:.85}4%{opacity:.96}5%{opacity:.88}6%{opacity:.98}}
+    .lightsaber{height:6px;border-radius:999px;transform-origin:left center;transform:scaleX(0);
+      background:linear-gradient(90deg,#1a1a1a 0 8%,transparent 8%),linear-gradient(90deg,var(--saber) 0 40%,var(--saber-soft) 40% 60%,#fff 60% 62%,var(--saber-soft) 62% 80%,var(--saber) 80% 100%);
+      box-shadow:0 0 18px var(--saber),0 0 36px rgba(225,6,0,.4);filter:saturate(1.3)}
+    .ignite{animation:ignite .9s cubic-bezier(.25,.9,.25,1) forwards}
+    @keyframes ignite{to{transform:scaleX(1)}}
+    .holo-chip{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem .75rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(18,18,18,.7);font-size:.85rem;letter-spacing:.04em}
+    .skill-badges{display:flex;flex-wrap:wrap;gap:.55rem}
+    .skill-badge{padding:.42rem .78rem;border:1px solid rgba(255,255,255,.12);border-radius:999px;font-size:.85rem;letter-spacing:.04em;background:rgba(10,10,10,.65);transition:transform .15s,border-color .15s,box-shadow .15s,background .15s;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    .skill-badge:hover{transform:translateY(-1px);border-color:rgba(225,6,0,.6);box-shadow:0 0 16px rgba(225,6,0,.35),inset 0 0 0 1px rgba(225,6,0,.3);background:rgba(18,18,18,.75)}
+    .pulse{animation:pulse 1.4s ease-in-out}
+    @keyframes pulse{0%{box-shadow:0 0 0 rgba(225,6,0,0)}40%{box-shadow:0 0 22px rgba(225,6,0,.5)}100%{box-shadow:0 0 0 rgba(225,6,0,0)}}
+    .card-title{color:var(--crawl);text-shadow:0 0 8px rgba(255,232,31,.25);display:flex;align-items:center;gap:.55rem}
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- Starfield -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-40">
+    <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="size-3 rounded-full bg-brand-red shadow-glow"></div>
+        <span class="headline text-lg tracking-wide">SAI KALYAN VEERA</span>
+      </div>
+      <nav class="ml-auto hidden sm:flex gap-4 text-sm">
+        <a href="#projects" class="opacity-80 hover:opacity-100">Projects</a>
+        <a href="#experience" class="opacity-80 hover:opacity-100">Experience</a>
+        <a href="#skills" class="opacity-80 hover:opacity-100">Skills</a>
+        <a href="#contact" class="opacity-80 hover:opacity-100">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="pt-28">
+    <section class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-6">
+        <h1 class="headline text-4xl md:text-6xl font-black">
+          <span id="roleRotatorTitle">Generative AI Engineer</span>
+        </h1>
+        <p class="text-lg md:text-xl opacity-90">
+          LLMs • RAG • Agents • Cloud ML. I build space-grade AI systems with real-world uptime and throughput wins.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="mailto:kalyanveera66@gmail.com?subject=Potential%20opportunity%20for%20Sai%20Kalyan&body=Hi%20Sai%2C%0A%0AI%20have%20a%20potential%20opportunity%20to%20discuss.%0A%0AThanks%2C%0A" class="dock-btn inline-flex items-center gap-2 rounded-full bg-brand-red text-white px-5 py-2.5">Contact</a>
+          <a href="resume.pdf" class="dock-btn inline-flex items-center gap-2 rounded-full border border-brand-red/40 px-5 py-2.5" download>View Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-4 mt-16">
+      <h2 class="headline text-2xl md:text-3xl mb-6">Projects</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="mx-auto max-w-6xl px-4 mt-16">
+      <h2 class="headline text-2xl md:text-3xl mb-6">Experience</h2>
+      <div class="space-y-4" id="experienceList"></div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="mx-auto max-w-6xl px-4 mt-16 grain">
+      <div class="flex items-center justify-between gap-4 mb-5">
+        <span class="holo-chip">🛰️ Technical Arsenal</span>
+        <div class="flex-1 lightsaber" id="saber"></div>
+      </div>
+      <p class="italic text-brand-red/90 mb-8">“The Force flows through code, and code flows through me.”</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="skillsGrid"></div>
+      <div class="mt-10 text-center">
+        <p class="text-lg font-semibold text-brand-red">Force Level: Generative AI Master</p>
+        <p class="opacity-80">99.99% UPTIME</p>
+        <p class="italic mt-2">“The Force is strong with this one” — Building galaxy-changing solutions</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mx-auto max-w-6xl px-4 my-20">
+      <h2 class="headline text-2xl md:text-3xl mb-6">Contact</h2>
+      <p>Email: <a class="underline underline-offset-4" href="mailto:kalyanveera66@gmail.com">kalyanveera66@gmail.com</a></p>
+      <div class="flex gap-3 mt-4">
+        <a class="dock-btn px-5 py-2.5 rounded-full bg-brand-red text-white" href="https://github.com/Kalyanveera03" target="_blank" rel="noopener">GitHub</a>
+        <a class="dock-btn px-5 py-2.5 rounded-full border border-brand-red/40" href="https://www.linkedin.com/in/kalyan66/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="dock-btn px-5 py-2.5 rounded-full border border-brand-red/40" href="https://medium.com/@kalyanvsk333" target="_blank" rel="noopener">Medium</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 text-center text-xs opacity-70">© <span id="year"></span> Sai Kalyan Veera — Built with a space-opera vibe.</footer>
+
+  <!-- Opening Crawl -->
+  <div id="sw-crawl-overlay">
+    <div id="sw-crawl-frame">
+      <button id="sw-crawl-skip" type="button" aria-label="Skip opening crawl">Skip</button>
+      <div id="sw-crawl"></div>
+    </div>
+  </div>
+
+  <script>
+    /* Starfield */
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d',{alpha:true});
+    let stars=[],w=0,h=0,anim;
+    function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;stars=Array.from({length:Math.min(250,Math.floor(w*h/8000))},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+.5,o:Math.random()*.8+.2}))}
+    function tick(){ctx.clearRect(0,0,w,h);for(const s of stars){s.x+=s.z;if(s.x>w)s.x=0;ctx.fillStyle=`rgba(241,245,249,${s.o})`;ctx.fillRect(s.x,s.y,s.z,s.z)}anim=requestAnimationFrame(tick)}
+    resize();tick();addEventListener('resize',()=>{cancelAnimationFrame(anim);resize();tick()});
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    /* Rotate hero title */
+    const roles=["Generative AI Engineer","AI Developer","ML Engineer","Data Scientist"];
+    (function(){const el=document.getElementById("roleRotatorTitle");let i=0;function next(){el.classList.remove("fade-in");void el.offsetWidth;el.textContent=roles[i];el.classList.add("fade-in");i=(i+1)%roles.length}next();setInterval(next,2500)})();
+
+    /* Opening crawl */
+    (function(){const overlay=document.getElementById('sw-crawl-overlay');const container=document.getElementById('sw-crawl');const skip=document.getElementById('sw-crawl-skip');let hide=null;
+      function stop(){if(hide)clearTimeout(hide);overlay.style.display='none';container.classList.remove('sw-crawl-animate');container.innerHTML=""}
+      window.startCrawl=({title,paragraphs=[],durationMs=32000})=>{const t=title?`<div class="title">${title}</div>`:"";const p=paragraphs.map(x=>`<p>${x}</p>`).join("");container.innerHTML=t+p;overlay.style.display='grid';container.classList.remove('sw-crawl-animate');void container.offsetWidth;container.classList.add('sw-crawl-animate');if(hide)clearTimeout(hide);hide=setTimeout(stop,durationMs)}
+      skip.addEventListener('click',stop)
+    })();
+    window.addEventListener('load',()=>{startCrawl({title:"Episode SKV — The Portfolio",paragraphs:[
+      "In a galaxy of endless possibilities, one developer rises with the force of caffeine and the passion to reshape worlds—I am Sai Kalyan Veera, and this is where innovation meets the infinite.",
+      "Armed with LLMs, RAG pipelines, and cloud-scale ML,",
+      "Sai Kalyan Veera deploys models with uptime and throughput victories.",
+      "The projects you are about to witness are the artifacts of those missions."
+    ],durationMs:2600})});
+
+    /* Data */
+    const PROJECTS=[
+      {title:"RAG Chatbot",summary:"Hybrid retrieval (embeddings + BM25), GPT responses, eval harness & dashboards.",tech:["LLM","LangChain","Pinecone"],tags:["LLM","RAG"],github:"https://github.com/Kalyanveera03"},
+      {title:"Customer Support AI",summary:"Llama-3.1-8B + quantization, Flask APIs, AWS ECS Fargate, metrics pipeline.",tech:["Llama 3.1","Flask","AWS"],tags:["LLM","Agents"],github:"https://github.com/Kalyanveera03"},
+      {title:"NYC Airbnb Analysis",summary:"EDA, pricing features, neighborhood clusters, interactive visualizations.",tech:["Python","Pandas","Plotly"],tags:["Analytics"],github:"https://github.com/Kalyanveera03"}
+    ];
+    const EXPERIENCE=[
+      {role:"Generative AI Engineer",company:"Alorasoft Inc",location:"Dallas, TX",dates:"Aug 2025 – Present",bullets:["Production RAG platform; 99.99% uptime; 60% lower inference latency.","LLM microservices (Java Spring + EC2/ALB); +45% pipeline throughput."]},
+      {role:"Technical Analyst",company:"Foundever",location:"Hyderabad, India",dates:"Jul 2023 – Jan 2024",bullets:["Python ETL 1M+/day; −60% batch time; AWS migration and dashboards."]}
+    ];
+    const SKILLS={
+      "🚀 Programming Languages":["Python","Java","SQL","C","HTML","CSS"],
+      "🧠 AI/ML & GenAI":["LLMs","LangChain","RAG","PyTorch","TensorFlow","Hugging Face","Fine-tuning","Quantization","CrewAI","LlamaIndex"],
+      "☁️ Cloud & DevOps":["AWS","Docker","Jenkins","CI/CD","MLOps","GitHub","REST APIs"],
+      "🗄️ Databases & Analytics":["PostgreSQL","MySQL","Snowflake","Tableau","ChromaDB","Qdrant","Oracle"],
+      "⚡ Frameworks & Libraries":["Spring Boot","Flask","FastAPI","React","Pandas","NumPy","Scikit-Learn","OpenCV","Hadoop","Keras"],
+      "🎯 Specializations":["Machine Learning","Deep Learning","Computer Vision","NLP","Distributed Computing","Agile/Scrum","MCP"]
+    };
+
+    /* Renderers */
+    function chip(label,hi=false){return `<span class="px-2 py-0.5 rounded-full border ${hi?'border-brand-red/40 text-brand-red/90':'border-white/10'}">${label}</span>`}
+
+    function renderProjects(){
+      const grid=document.getElementById('projectsGrid');
+      grid.innerHTML=PROJECTS.map(p=>`
+        <article class="group rounded-2xl p-4 border border-white/10 glass hover:shadow-glow transition">
+          <h3 class="font-semibold">${p.title}</h3>
+          <p class="text-sm opacity-80 mt-1">${p.summary}</p>
+          <div class="mt-3 flex gap-2 flex-wrap text-xs">
+            ${p.tags?.map(t=>chip(t,true)).join('')}
+            ${p.tech?.map(t=>chip(t)).join('')}
+          </div>
+          <div class="mt-4 flex gap-3 text-sm">
+            ${p.github?`<a class="underline underline-offset-4" href="${p.github}" target="_blank" rel="noopener">GitHub</a>`:''}
+          </div>
+        </article>
+      `).join('')
+    }
+
+    function renderExperience(){
+      const list=document.getElementById('experienceList');
+      list.innerHTML=EXPERIENCE.map(e=>`
+        <div class="border-l-2 border-brand-red/60 pl-4">
+          <h3 class="font-semibold">${e.role} — ${e.company}</h3>
+          <p class="text-sm opacity-80">${e.dates}${e.location?' • '+e.location:''}</p>
+          <ul class="list-disc ml-5 mt-2 text-sm opacity-90 space-y-1">
+            ${e.bullets.map(b=>`<li>${b}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('')
+    }
+
+    function renderSkills(){
+      const grid=document.getElementById('skillsGrid');
+      grid.innerHTML=Object.entries(SKILLS).map(([group,items])=>`
+        <article class="holo rounded-2xl p-4 flicker">
+          <h3 class="card-title headline text-lg mb-3">${group}</h3>
+          ${Array.isArray(items)
+            ? `<div class="skill-badges">${items.map(s=>`<span class="skill-badge">${s}</span>`).join('')}</div>`
+            : ''}
+        </article>
+      `).join('');
+    }
+
+    renderProjects();
+    renderExperience();
+    renderSkills();
+
+    /* Saber ignition on skills view */
+    const saber=document.getElementById('saber');
+    const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){saber.classList.add('ignite');io.disconnect();}})},{threshold:.35});
+    io.observe(saber);
+
+    /* Random badge pulses */
+    function pulseBadges(){const badges=[...document.querySelectorAll('.skill-badge')];if(!badges.length)return;const n=Math.max(2,Math.floor(badges.length/12));for(let i=0;i<n;i++){const b=badges[Math.floor(Math.random()*badges.length)];b.classList.add('pulse');setTimeout(()=>b.classList.remove('pulse'),1400)}}
+    setInterval(pulseBadges,1500);
+  </script>
+</body>
+</html>
